@@ -1,4 +1,5 @@
 import gzip
+import multiprocessing
 
 class Utils:
 
@@ -12,6 +13,8 @@ class Utils:
             lines = [line.rstrip('\n') for line in f]
 
         return lines
+
+
 
 
 
