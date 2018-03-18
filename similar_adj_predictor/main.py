@@ -13,7 +13,7 @@ if __name__ == '__main__':
     parser.add_argument('train_data_file',help='file containing adj-noun-adj triplets with sampling weights for training')
     parser.add_argument('model_path',help='path for the model pickle - in case of training this is an output path. in case of testing its from where to load the model')
     parser.add_argument('test_data_file',help='dataset for testing (extrinsic evaluation)')
-    parser.add_argument('-t', 'train_mode', default=True, action='store_true',help='train mode or only test if False')
+    parser.add_argument('-t','--train_mode',  default=False, action='store_true',help='train mode or only test if False')
 
     args = parser.parse_args()
     run()

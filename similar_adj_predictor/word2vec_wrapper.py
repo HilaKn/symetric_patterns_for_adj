@@ -2,6 +2,7 @@ import gensim
 import os
 from config_params import *
 
+
 class WordVecWrapper(object):
 
     def __init__(self,we_file):
@@ -10,11 +11,20 @@ class WordVecWrapper(object):
 
     def set_model(self):
         # load pre-trained word2ec
-        print "start loading word2vec model from: {}".format(self.we_file)
+        # print "start loading word2vec model from: {}".format(self.we_file)
+        # self.model = gensim.models.KeyedVectors.load_word2vec_format(self.we_file, binary=True)
+        # # self.model = gensim.models.KeyedVectors.load(self.we_file, mmap='r')  # mmap the large matrix as read-only
+        # print "done loading word2vec model from"
+        print "start loading normed word2vec model from: {}".format(self.we_file)
         self.model = gensim.models.KeyedVectors.load(self.we_file, mmap='r')  # mmap the large matrix as read-only
-        print "done loading word2vec model from"
+        self.model.syn0norm = self.model.syn0
+
+        print "done loading normed word2vec model from"
         print "testing word2vec model"
         print "vocab size = {}".format(len(self.model.vocab))
+        word = "hot"
+        # print "{} vector = {}".format(word, self.model[word])
+        # print "{} most sim: {}".format(word,self.model.similar_by_word(word,5))
         print "done testing model"
 
     def is_all_in_vocab(self, list_of_words):
